@@ -97,6 +97,11 @@
   100% { transform: translateX(100%) rotate(12deg); }
 }
 
+
 .animate-shimmer { 
   animation: shimmer 3s ease-in-out infinite; 
+}
+
+.font-monoton {
+  font-family: var(--font-monoton);
 }
