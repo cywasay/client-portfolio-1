@@ -7,14 +7,17 @@ export default function LvHero() {
         <div className="absolute bottom-32 left-1/3 w-64 h-64 bg-purple-100 rounded-full opacity-25 animate-float-fast" />
       </div>
       <div className="relative px-6 sm:px-12 lg:px-20 text-center">
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-emerald-600 to-purple-600 bg-clip-text text-transparent">
-          Leadership <span className="block text-3xl sm:text-4xl lg:text-5xl text-gray-600 mt-4">& Values</span>
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-blue-950">
+          Leadership{" "}
+          <span className="block text-3xl sm:text-4xl lg:text-5xl text-gray-600 mt-4">
+            & Values
+          </span>
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Guiding principles that shape educational transformation and inspire meaningful impact.
+          Guiding principles that shape educational transformation and inspire
+          meaningful impact.
         </p>
       </div>
     </section>
   );
 }
-
