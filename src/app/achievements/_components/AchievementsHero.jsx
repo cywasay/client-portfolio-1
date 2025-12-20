@@ -1,4 +1,5 @@
-import { impactStats } from '../data';
+import { impactStats } from "../data";
+import { Card, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function AchievementsHero() {
   return (
@@ -8,23 +9,30 @@ export default function AchievementsHero() {
         <div className="absolute top-40 right-20 w-96 h-96 bg-emerald-200 rounded-full opacity-15 animate-float-medium" />
       </div>
       <div className="relative max-w-7xl mx-auto text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-emerald-600 to-purple-600 bg-clip-text text-transparent">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-blue-950">
           Achievements & Impact
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-10">
-          Celebrating milestones that shaped innovation, inspired students, and created lasting impact.
+          Celebrating milestones that shaped innovation, inspired students, and
+          created lasting impact.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {impactStats.map((stat) => (
-            <div key={stat.label} className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition hover:-translate-y-2 border border-gray-100">
+            <Card
+              key={stat.label}
+              className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition hover:-translate-y-2 border border-gray-100"
+            >
               <div className="text-3xl mb-2">{stat.icon}</div>
-              <div className="text-2xl font-bold text-gray-800">{stat.number}</div>
-              <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
-            </div>
+              <CardTitle className="text-2xl font-bold text-gray-800">
+                {stat.number}
+              </CardTitle>
+              <CardDescription className="text-sm text-gray-600 font-medium">
+                {stat.label}
+              </CardDescription>
+            </Card>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
