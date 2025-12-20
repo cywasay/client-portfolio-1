@@ -8,14 +8,14 @@ export default function GalleryHero() {
       </div>
 
       <div className="relative px-4 sm:px-6 lg:px-12 xl:px-20 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-600 via-emerald-600 to-purple-600 bg-clip-text text-transparent">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-blue-950">
           Visual Journey
         </h1>
         <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
-          A curated collection of transformative moments, inspiring events, and memorable milestones from my educational journey
+          A curated collection of transformative moments, inspiring events, and
+          memorable milestones from my educational journey
         </p>
       </div>
     </section>
   );
 }
-

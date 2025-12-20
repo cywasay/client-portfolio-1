@@ -35,15 +35,25 @@ export default function HeroClient() {
                 Inspiring Futures
               </span>
             </h1>
-            <p ref={taglineRef} className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-              Empowering students through innovative education, compassionate leadership, and transformative learning experiences.
+            <p
+              ref={taglineRef}
+              className="text-lg sm:text-xl text-gray-600 leading-relaxed"
+            >
+              Empowering students through innovative education, compassionate
+              leadership, and transformative learning experiences.
             </p>
           </div>
           <div className="flex flex-wrap gap-6 py-6">
             {heroHighlights.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className={`text-3xl sm:text-4xl font-bold ${stat.color} mb-1`}>{stat.number}</div>
-                <div className="text-gray-600 font-medium text-sm sm:text-base">{stat.label}</div>
+                <div
+                  className={`text-3xl sm:text-4xl font-bold ${stat.color} mb-1`}
+                >
+                  {stat.number}
+                </div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -55,7 +65,13 @@ export default function HeroClient() {
         <div className="flex-1 flex justify-center lg:justify-end">
           <div className="relative">
             <div className="w-80 h-80 sm:w-96 sm:h-96 lg:w-[29rem] lg:h-[29rem] rounded-full bg-gradient-to-br from-blue-400 via-emerald-400 to-purple-400 shadow-2xl ring-4 ring-white/50 relative overflow-hidden">
-              <Image src="/edu-leader.jpg" alt="Education Leader" fill className="object-cover" priority />
+              <Image
+                src="/edu-leader.jpg"
+                alt="Education Leader"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
             <div className="absolute -top-4 -left-4 w-20 h-20 bg-yellow-400 rounded-2xl rotate-12 opacity-80 animate-float-slow" />
             <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-pink-400 rounded-3xl -rotate-12 opacity-60 animate-float-medium" />
@@ -71,20 +87,26 @@ export default function HeroClient() {
   );
 }
 
+import { Button } from "@/components/ui/button";
+
 function PrimaryButton({ children }) {
   return (
-    <button className="group px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-2xl font-semibold hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:-translate-y-1 flex items-center gap-3">
+    <Button className="group px-8 py-6 h-auto bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-2xl font-semibold hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:-translate-y-1 flex items-center gap-3">
       <span>{children}</span>
-      <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-    </button>
+      <span className="group-hover:translate-x-1 transition-transform duration-300">
+        →
+      </span>
+    </Button>
   );
 }
 
 function SecondaryButton({ children }) {
   return (
-    <button className="px-8 py-4 text-blue-950 rounded-2xl font-semibold hover:bg-blue-950 hover:text-white transition-all duration-300 flex items-center gap-3">
+    <Button
+      variant="ghost"
+      className="px-8 py-6 h-auto text-blue-950 rounded-2xl font-semibold hover:bg-blue-950 hover:text-white transition-all duration-300 flex items-center gap-3"
+    >
       {children}
-    </button>
+    </Button>
   );
 }
-
