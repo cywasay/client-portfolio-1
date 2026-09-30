@@ -1,13 +1,13 @@
 import HeroClient from "./_components/HeroClient";
-import AboutSection from "./_components/AboutSection";
-import TestimonialsClient from "./_components/TestimonialsClient";
+import HomeStory from "./_components/HomeStory";
+import styles from "./_components/HomeStory.module.css";
+import atmosphere from "./_components/HomeAtmosphere.module.css";
 
 export default function Home() {
   return (
-    <main className="text-gray-800 bg-white overflow-hidden">
+    <main id="top" className={`${styles.home} ${atmosphere.atmosphere} text-gray-800`}>
       <HeroClient />
-      <AboutSection />
-      <TestimonialsClient />
+      <HomeStory />
     </main>
   );
 }

@@ -3,7 +3,7 @@ import { interactiveStats } from "../home-data";
 
 export default function AboutSection() {
   return (
-    <section className="relative py-20 px-6 sm:px-12 lg:px-20 bg-white">
+    <section id="about" className="relative py-20 px-6 sm:px-12 lg:px-20 bg-white">
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-blue-950">About My Journey</h2>

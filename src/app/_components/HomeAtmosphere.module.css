@@ -1,0 +1,26 @@
+/* Shared curves and light: scoped to the renewed homepage. */
+.atmosphere {
+  background: #f5f9fc;
+}
+.atmosphere > section:first-child {
+  background: radial-gradient(ellipse at 10% 15%, #c8e4f4 0, transparent 48%),
+    radial-gradient(ellipse at 44% 90%, #dce2fa 0, transparent 45%), #f0f6fa;
+}
+.atmosphere :global([data-hero-actions] a) { border-radius: 999px; }
+.atmosphere :global([data-hero-actions] a:last-child) { border-color: transparent; background: #ffffff80; }
+.atmosphere :global([data-hero-actions] a:last-child span) { display: none; }
+.atmosphere :global([data-hero-copy]) { border: 0; padding-left: 0; }
+.atmosphere :global([data-hero-eyebrow] > span) { width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 0 5px #438fbd12; }
+.atmosphere :global([data-hero-stat]) { border: 0; }
+.atmosphere :global([data-hero-stat]):first-child { padding-left: 16px; }
+.atmosphere :global([data-hero-visual]) { border-radius: 110px 24px 24px 24px; margin: 20px 24px 20px 0; box-shadow: 0 20px 45px #0e3c5e18; }
+.atmosphere :global([data-hero-visual] .border-t),
+.atmosphere :global([data-hero-visual] .border-l) { border: 0; }
+.atmosphere :global([data-hero-visual] .border-l) { padding-left: 0; }
+.atmosphere :global([data-hero-stat]):first-child::before { content: none; }
+@media(max-width:1023px) {
+  .atmosphere :global([data-hero-visual]) { margin: 0 24px 24px; border-radius: 70px 24px 24px 24px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .atmosphere * { scroll-behavior: auto !important; }
+}
