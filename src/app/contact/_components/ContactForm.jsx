@@ -2,23 +2,16 @@
 
 import { useState } from "react";
 import ContactVisual from "./ContactVisual";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -28,100 +21,26 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="px-4 sm:px-6 lg:px-12 xl:px-20 mb-16 sm:mb-20">
-      <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start">
-        <FormCard
-          formData={formData}
-          isSubmitting={isSubmitting}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-        />
-        <ContactVisual />
+    <section className="editorialSection editorialSectionAlt"><div className="editorialInner grid overflow-hidden rounded-[2rem] border border-[#c8dceb] bg-white shadow-[0_28px_80px_rgba(24,67,96,.12)] lg:grid-cols-[1.08fr_.92fr]">
+      <div className="p-6 sm:p-9 lg:p-12">
+        <p className="editorialKicker">Start a conversation</p>
+        <h2 className="font-serif text-4xl leading-tight text-[#123f60] sm:text-5xl">Tell me what you are building.</h2>
+        <p className="mt-4 max-w-xl leading-7 text-[#60798a]">Share the context, the people involved, and the change you hope to make. A thoughtful first note is all we need.</p>
+        <form onSubmit={handleSubmit} className="mt-9 space-y-6">
+          <div className="grid gap-5 sm:grid-cols-2">
+            <InputField id="name" label="Your name" type="text" value={formData.name} onChange={handleChange} placeholder="Full name" />
+            <InputField id="email" label="Email address" type="email" value={formData.email} onChange={handleChange} placeholder="name@example.com" />
+          </div>
+          <InputField id="message" label="What would you like to discuss?" type="textarea" value={formData.message} onChange={handleChange} placeholder="A short note about your idea or invitation" />
+          <button type="submit" disabled={isSubmitting} className="editorialButton disabled:cursor-wait disabled:opacity-60">{isSubmitting ? "Sending…" : "Send message"} <span>→</span></button>
+        </form>
       </div>
-    </section>
+      <ContactVisual />
+    </div></section>
   );
 }
 
-function FormCard({ formData, isSubmitting, onChange, onSubmit }) {
-  return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 shadow-2xl border-2 border-gray-100">
-      <header className="text-center mb-6 sm:mb-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-2">
-          Send a Message
-        </h2>
-        <p className="text-gray-600 text-sm sm:text-base">
-          I&apos;ll get back to you as soon as possible.
-        </p>
-      </header>
-      <form onSubmit={onSubmit} className="space-y-5 sm:space-y-6">
-        {["name", "email"].map((field) => (
-          <InputField
-            key={field}
-            id={field}
-            label={field === "name" ? "Your Name" : "Your Email"}
-            type={field === "email" ? "email" : "text"}
-            value={formData[field]}
-            onChange={onChange}
-            placeholder={
-              field === "name"
-                ? "Enter your full name"
-                : "your.email@example.com"
-            }
-          />
-        ))}
-        <InputField
-          id="message"
-          label="Your Message"
-          type="textarea"
-          value={formData.message}
-          onChange={onChange}
-          placeholder="What would you like to discuss?"
-        />
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className={`w-full py-6 h-auto rounded-xl font-semibold transition-all shadow-lg text-sm sm:text-base ${
-            isSubmitting
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-gradient-to-r from-blue-500 to-emerald-500 hover:from-blue-600 hover:to-emerald-600 hover:shadow-xl hover:-translate-y-1"
-          } text-white`}
-        >
-          {isSubmitting ? "Sending..." : "Send Message ✨"}
-        </Button>
-      </form>
-    </div>
-  );
+function InputField({ id, label, type, value, onChange, placeholder }) {
+  const classes = "rounded-xl border border-[#c8dceb] bg-[#f7fafc] px-4 text-[#173e58] shadow-none outline-none transition placeholder:text-[#8ca0ae] focus:border-[#4f98c5] focus:bg-white focus-visible:ring-2 focus-visible:ring-[#cfe8f6]";
+  return <div className="space-y-2"><Label htmlFor={id} className="text-xs font-bold uppercase tracking-[.14em] text-[#46687e]">{label}</Label>{type === "textarea" ? <Textarea id={id} name={id} value={value} onChange={onChange} required placeholder={placeholder} className={`${classes} min-h-40 resize-none py-4`} /> : <Input id={id} name={id} type={type} value={value} onChange={onChange} required placeholder={placeholder} className={`${classes} h-12`} />}</div>;
 }
-
-const InputField = ({ id, label, type, value, onChange, placeholder }) => (
-  <div className="group space-y-2">
-    <Label
-      htmlFor={id}
-      className="text-gray-700 font-semibold group-focus-within:text-blue-600 transition-colors"
-    >
-      {label}
-    </Label>
-    {type === "textarea" ? (
-      <Textarea
-        id={id}
-        name={id}
-        value={value}
-        onChange={onChange}
-        required
-        placeholder={placeholder}
-        className="min-h-[150px] resize-none border-2 border-gray-200 focus:border-blue-500 bg-gray-50 focus:bg-white text-base sm:text-base focus-visible:ring-4 focus-visible:ring-blue-100 placeholder:text-gray-400"
-      />
-    ) : (
-      <Input
-        id={id}
-        type={type}
-        name={id}
-        value={value}
-        onChange={onChange}
-        required
-        placeholder={placeholder}
-        className="py-6 border-2 border-gray-200 focus:border-blue-500 bg-gray-50 focus:bg-white text-base sm:text-base focus-visible:ring-4 focus-visible:ring-blue-100 placeholder:text-gray-400"
-      />
-    )}
-  </div>
-);

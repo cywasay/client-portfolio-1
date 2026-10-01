@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowLeft, ArrowRight, BookOpen, Users, Compass, Plus, Minus } from "lucide-react";
+import SiteFooter from "@/components/SiteFooter";
 import styles from "./HomeStory.module.css";
 
 const principles = [
@@ -149,30 +150,7 @@ export default function HomeStory() {
 
     <div className={styles.envelopeStage}>
       <section id="connect" className={styles.connect} aria-labelledby="connect-heading"><div className={styles.orbit} aria-hidden="true" /><p className={styles.eyebrow}>04 / THE CONVERSATION</p><h2 id="connect-heading">The next great idea<br />starts with <em>a conversation.</em></h2><p>For educational collaborations, speaking invitations,<br className={styles.desktopBreak} /> or a thoughtful exchange of ideas, let&apos;s connect.</p><Link className={styles.contactButton} href="/contact">Start a conversation<ArrowUpRight size={22} aria-hidden="true" /></Link><div className={styles.contactTopics}><span>Education</span><span>Leadership</span><span>Community</span></div><span className={styles.envelopeHint} aria-hidden="true">Keep scrolling <span>↓</span></span></section>
-      <footer className={styles.footer}>
-        <div className={styles.footerFlap} aria-hidden="true"><span>A note from Neelam</span></div>
-        <div className={styles.footerMain}>
-          <div className={styles.footerIdentity}>
-            <Link className={styles.footerBrand} href="/">Neelam Nasir<span>EDUCATOR & EDUCATIONAL LEADER</span></Link>
-            <p>Education changes what people believe is possible.</p>
-          </div>
-          <div className={styles.footerDirectory}>
-            <nav aria-label="Explore">
-              <span>Explore</span>
-              <Link href="/about">About</Link>
-              <Link href="/journey/career">Career</Link>
-              <Link href="/achievements">Achievements</Link>
-            </nav>
-            <nav aria-label="Discover">
-              <span>Discover</span>
-              <Link href="/leadership-and-values">Leadership</Link>
-              <Link href="/gallery">Gallery</Link>
-              <Link href="/contact">Contact</Link>
-            </nav>
-          </div>
-        </div>
-        <div className={styles.footerBottom}><p>© {new Date().getFullYear()} Neelam Nasir. All rights reserved.</p><a href="#top">Back to top <span>↑</span></a></div>
-      </footer>
+      <SiteFooter envelope />
     </div>
   </div>;
 }

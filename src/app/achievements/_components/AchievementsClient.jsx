@@ -15,43 +15,36 @@ export default function AchievementsClient({ achievements }) {
       {
         id: "all",
         label: "All Achievements",
-        icon: "🌟",
         count: achievements.length,
       },
       {
         id: "teaching",
         label: "Teaching Excellence",
-        icon: "👨‍🏫",
         count: counts("teaching"),
       },
       {
         id: "innovation",
         label: "Innovation",
-        icon: "💡",
         count: counts("innovation"),
       },
       {
         id: "leadership",
         label: "Leadership",
-        icon: "🌟",
         count: counts("leadership"),
       },
       {
         id: "research",
         label: "Research",
-        icon: "🔬",
         count: counts("research"),
       },
       {
         id: "technology",
         label: "Technology",
-        icon: "🚀",
         count: counts("technology"),
       },
       {
         id: "community",
         label: "Community",
-        icon: "🤝",
         count: counts("community"),
       },
     ];
@@ -64,23 +57,22 @@ export default function AchievementsClient({ achievements }) {
 
   return (
     <>
-      <section className="py-12 px-6 sm:px-12 lg:px-20">
-        <div className="max-w-7xl mx-auto">
+      <section className="editorialSection !pb-4">
+        <div className="editorialInner">
           <Tabs
             defaultValue="all"
             value={activeCategory}
             onValueChange={setActiveCategory}
             className="w-full"
           >
-            <div className="flex justify-center">
-              <TabsList className="bg-transparent h-auto flex flex-wrap justify-center gap-3 p-0">
+            <div>
+              <TabsList className="editorialTabs h-auto bg-transparent p-0">
                 {categories.map((category) => (
                   <TabsTrigger
                     key={category.id}
                     value={category.id}
-                    className="flex-none flex items-center gap-2 px-4 py-3 rounded-xl font-semibold transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-emerald-500 data-[state=active]:text-white data-[state=active]:shadow-xl bg-white text-gray-700 shadow-md hover:shadow-lg hover:-translate-y-1 h-auto border-none"
+                    className="editorialTab"
                   >
-                    <span className="text-lg">{category.icon}</span>
                     <span className="hidden sm:inline">{category.label}</span>
                     <span className="sm:hidden">
                       {category.label.split(" ")[0]}
@@ -101,8 +93,8 @@ export default function AchievementsClient({ achievements }) {
           </Tabs>
         </div>
       </section>
-      <section className="py-16 px-6 sm:px-12 lg:px-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+      <section className="editorialSection !pt-8">
+        <div className="editorialInner grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3">
           {filtered.map((achievement) => (
             <AchievementCard
               key={achievement.title}

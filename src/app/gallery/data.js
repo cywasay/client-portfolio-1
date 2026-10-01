@@ -1,28 +1,39 @@
 export const galleryCategories = [
-  { id: 'all', label: 'All Moments', icon: '🌟', count: 12 },
-  { id: 'teaching', label: 'Teaching', icon: '👨‍🏫', count: 4 },
-  { id: 'events', label: 'Events', icon: '🎉', count: 3 },
-  { id: 'achievements', label: 'Achievements', icon: '🏆', count: 3 },
-  { id: 'community', label: 'Community', icon: '🤝', count: 2 }
+  { id: "all", label: "All Moments", icon: "01", count: 12 },
+  { id: "teaching", label: "Teaching", icon: "02", count: 4 },
+  { id: "events", label: "Events", icon: "03", count: 3 },
+  { id: "achievements", label: "Achievements", icon: "04", count: 3 },
+  { id: "community", label: "Community", icon: "05", count: 2 },
 ];
 
-export const galleryItems = [
-  { id: 1, category: 'teaching', title: 'Classroom Innovation', description: 'Interactive learning session using cutting-edge educational technology.', date: '2023', gradient: 'from-blue-400 to-cyan-500', icon: '💻', featured: true, size: 'medium' },
-  { id: 2, category: 'events', title: 'Education Conference', description: 'Keynote speaker at National Education Summit 2023.', date: 'Nov 2023', gradient: 'from-emerald-400 to-teal-500', icon: '🎤', featured: true, size: 'large' },
-  { id: 3, category: 'achievements', title: 'STEM Award', description: 'Recognized for innovative STEM curriculum design.', date: '2022', gradient: 'from-purple-400 to-pink-500', icon: '🏅', featured: false, size: 'small' },
-  { id: 4, category: 'community', title: 'Parent Workshop', description: 'Hosted collaborative learning workshop for parents.', date: 'Oct 2023', gradient: 'from-orange-400 to-amber-500', icon: '🧑‍🤝‍🧑', featured: false, size: 'small' },
-  { id: 5, category: 'events', title: 'Innovation Expo', description: 'Students presenting prototypes at city innovation expo.', date: 'Sep 2023', gradient: 'from-teal-400 to-emerald-500', icon: '🧪', featured: false, size: 'medium' },
-  { id: 6, category: 'teaching', title: 'Project Showcase', description: 'Capstone projects highlighting collaborative problem-solving.', date: '2024', gradient: 'from-sky-400 to-indigo-500', icon: '📚', featured: true, size: 'large' },
-  { id: 7, category: 'achievements', title: 'Grant Winner', description: 'Secured funding for robotics and AI lab.', date: '2021', gradient: 'from-amber-400 to-rose-500', icon: '💡', featured: false, size: 'medium' },
-  { id: 8, category: 'community', title: 'Service Day', description: 'Students volunteering to uplift local community spaces.', date: 'Aug 2023', gradient: 'from-lime-400 to-green-500', icon: '🌱', featured: false, size: 'medium' },
-  { id: 9, category: 'events', title: 'Alumni Meetup', description: 'Celebrating success stories and mentorship circles.', date: '2024', gradient: 'from-blue-500 to-violet-500', icon: '🤝', featured: false, size: 'small' },
-  { id: 10, category: 'achievements', title: 'Publication', description: 'Article featured in national education journal.', date: '2022', gradient: 'from-indigo-400 to-purple-500', icon: '📰', featured: false, size: 'small' },
-  { id: 11, category: 'teaching', title: 'Lab Immersion', description: 'Hands-on science immersion with real-world experiments.', date: '2024', gradient: 'from-cyan-400 to-blue-500', icon: '🔬', featured: false, size: 'medium' },
-  { id: 12, category: 'teaching', title: 'Design Thinking', description: 'Design sprint guiding students from ideation to prototype.', date: '2023', gradient: 'from-rose-400 to-red-500', icon: '🎨', featured: false, size: 'small' }
+const items = [
+  ["teaching", "Classroom Innovation", "Interactive learning session using thoughtful educational technology.", "2023", true, "medium"],
+  ["events", "Education Conference", "Keynote speaker at National Education Summit 2023.", "Nov 2023", true, "large"],
+  ["achievements", "STEM Award", "Recognized for innovative STEM curriculum design.", "2022", false, "small"],
+  ["community", "Parent Workshop", "Hosted a collaborative learning workshop for parents.", "Oct 2023", false, "small"],
+  ["events", "Innovation Expo", "Students presenting prototypes at a city innovation expo.", "Sep 2023", false, "medium"],
+  ["teaching", "Project Showcase", "Capstone projects highlighting collaborative problem-solving.", "2024", true, "large"],
+  ["achievements", "Grant Winner", "Secured funding for a robotics and AI lab.", "2021", false, "medium"],
+  ["community", "Service Day", "Students supporting and improving local community spaces.", "Aug 2023", false, "medium"],
+  ["events", "Alumni Meetup", "Celebrating success stories and mentorship circles.", "2024", false, "small"],
+  ["achievements", "Publication", "Article featured in a national education journal.", "2022", false, "small"],
+  ["teaching", "Lab Immersion", "Hands-on science learning through real-world experiments.", "2024", false, "medium"],
+  ["teaching", "Design Thinking", "A design sprint guiding students from idea to prototype.", "2023", false, "small"],
 ];
+
+export const galleryItems = items.map(([category, title, description, date, featured, size], index) => ({
+  id: index + 1,
+  category,
+  title,
+  description,
+  date,
+  featured,
+  size,
+  icon: String(index + 1).padStart(2, "0"),
+  gradient: "from-blue-500 to-sky-600",
+}));
 
 export const storyHighlights = [
-  { title: 'Graduation Ceremony 2023', description: 'Celebrating the achievements of 150+ students as they embark on their next educational journey.', icon: '🎓', cta: 'View Album', gradient: 'from-blue-500 to-purple-600' },
-  { title: 'Science Fair Innovation', description: 'Students showcasing groundbreaking projects that demonstrate curiosity and collaboration.', icon: '🔬', cta: 'Explore Projects', gradient: 'from-emerald-500 to-teal-600' }
+  { title: "Graduation Ceremony 2023", description: "Celebrating 150+ students as they begin their next educational chapter.", icon: "01", cta: "View Album", gradient: "from-blue-500 to-sky-600" },
+  { title: "Science Fair Innovation", description: "Students presenting projects grounded in curiosity and collaboration.", icon: "02", cta: "Explore Projects", gradient: "from-blue-500 to-sky-600" },
 ];
-

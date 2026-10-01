@@ -6,7 +6,7 @@ import { galleryCategories, galleryItems, storyHighlights } from './data';
 
 export default function Gallery() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 overflow-x-hidden">
+    <main id="top" className="interiorPage">
       <GalleryHero />
       <GalleryClient categories={galleryCategories} items={galleryItems} />
       <StoryHighlights highlights={storyHighlights} />

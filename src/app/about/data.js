@@ -1,22 +1,22 @@
 export const stats = [
-  { number: '500+', label: 'Students Impacted', icon: '👨‍🎓' },
-  { number: '10+', label: 'Years Experience', icon: '📅' },
-  { number: '25+', label: 'Programs Developed', icon: '🛠️' },
-  { number: '95%', label: 'Student Engagement', icon: '🎯' }
+  { number: '500+', label: 'Students Impacted', icon: '01' },
+  { number: '10+', label: 'Years Experience', icon: '02' },
+  { number: '25+', label: 'Programs Developed', icon: '03' },
+  { number: '95%', label: 'Student Engagement', icon: '04' }
 ];
 
 export const philosophyPoints = [
-  { icon: '🎯', title: 'Student-Centered Learning', description: 'Placing students at the heart of every decision to guide their journey.', color: 'blue' },
-  { icon: '💡', title: 'Innovative Methodologies', description: 'Adapting teaching strategies to diverse learning styles and futures.', color: 'emerald' },
-  { icon: '🌱', title: 'Lifelong Growth Mindset', description: 'Creating spaces where continuous learning and resilience are celebrated.', color: 'blue' },
-  { icon: '🤝', title: 'Inclusive Environments', description: 'Welcoming every student to contribute their unique perspective.', color: 'emerald' },
-  { icon: '🔍', title: 'Critical Thinking Focus', description: 'Building inquiry-based habits to solve complex problems.', color: 'blue' }
+  { icon: '01', title: 'Student-Centered Learning', description: 'Placing students at the heart of every decision to guide their journey.', color: 'blue' },
+  { icon: '02', title: 'Innovative Methodologies', description: 'Adapting teaching strategies to diverse learning styles and futures.', color: 'blue' },
+  { icon: '03', title: 'Lifelong Growth Mindset', description: 'Creating spaces where continuous learning and resilience are celebrated.', color: 'blue' },
+  { icon: '04', title: 'Inclusive Environments', description: 'Welcoming every student to contribute their unique perspective.', color: 'blue' },
+  { icon: '05', title: 'Critical Thinking Focus', description: 'Building inquiry-based habits to solve complex problems.', color: 'blue' }
 ];
 
 export const experienceTimeline = [
-  { year: '2020-Present', role: 'Senior Educator & Curriculum Lead', institution: 'Innovation High School', achievements: ['Led STEM curriculum development', 'Mentored 15+ teachers', 'Improved engagement by 40%'], icon: '🚀' },
-  { year: '2017-2020', role: 'Instructional Coach', institution: 'City School District', achievements: ['Trained 100+ educators', 'Developed 20+ training modules', 'Increased teacher satisfaction'], icon: '👥' },
-  { year: '2014-2017', role: 'Classroom Teacher', institution: 'Maplewood Elementary', achievements: ['Department leadership', 'Community programs', 'Grant writing success'], icon: '📚' }
+  { year: '2020-Present', role: 'Senior Educator & Curriculum Lead', institution: 'Innovation High School', achievements: ['Led STEM curriculum development', 'Mentored 15+ teachers', 'Improved engagement by 40%'], icon: '01' },
+  { year: '2017-2020', role: 'Instructional Coach', institution: 'City School District', achievements: ['Trained 100+ educators', 'Developed 20+ training modules', 'Increased teacher satisfaction'], icon: '02' },
+  { year: '2014-2017', role: 'Classroom Teacher', institution: 'Maplewood Elementary', achievements: ['Department leadership', 'Community programs', 'Grant writing success'], icon: '03' }
 ];
 
 export const approachParagraphs = [
