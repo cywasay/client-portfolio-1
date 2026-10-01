@@ -1,39 +1,18 @@
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function StoryHighlights({ highlights }) {
   return (
-    <section className="px-4 sm:px-6 lg:px-12 xl:px-20 mb-16 sm:mb-20">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-800">
-            Story Highlights
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-600 px-4">
-            Featured moments that tell the story behind the images
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-          {highlights.map((item) => (
-            <div
-              key={item.title}
-              className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br ${item.gradient} text-white p-6 sm:p-7 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 sm:hover:-translate-y-2`}
-            >
-              <div className="relative z-10 space-y-3 sm:space-y-4">
-                <div className="text-3xl sm:text-4xl">{item.icon}</div>
-                <h3 className="text-xl sm:text-2xl font-bold">{item.title}</h3>
-                <p className="text-white/80 leading-relaxed text-sm sm:text-base">
-                  {item.description}
-                </p>
-                <Button className="bg-white text-blue-600 px-4 sm:px-6 py-2 h-auto rounded-full font-semibold hover:bg-blue-50 transition-colors duration-300 text-sm sm:text-base border-none">
-                  {item.cta}
-                </Button>
-              </div>
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500" />
-            </div>
-          ))}
-        </div>
+    <section className="editorialSection editorialSectionAlt"><div className="editorialInner">
+      <div className="mb-10 grid gap-5 md:grid-cols-[1fr_.7fr] md:items-end">
+        <div><p className="editorialKicker">Selected stories</p><h2 className="editorialHeading">A closer look at the moments that shape a school.</h2></div>
+        <p className="max-w-xl leading-7 text-[#5c7586] md:justify-self-end">Beyond the photographs are the people, decisions, and shared experiences that make each milestone meaningful.</p>
       </div>
-    </section>
+      <div className="grid gap-5 lg:grid-cols-2">
+        {highlights.map((item, index) => <article key={item.title} className="editorialCard group relative min-h-72 overflow-hidden p-7 sm:p-9">
+          <span className="editorialIndex">{String(index + 1).padStart(2, "0")}</span>
+          <div className="mt-16 max-w-md"><h3 className="font-serif text-3xl text-[#123f60]">{item.title}</h3><p className="mt-4 leading-7 text-[#5c7586]">{item.description}</p><Link href="/gallery" className="mt-7 inline-flex items-center gap-3 text-sm font-bold text-[#1d658f]">{item.cta} <span className="transition group-hover:translate-x-1">→</span></Link></div>
+        </article>)}
+      </div>
+    </div></section>
   );
 }

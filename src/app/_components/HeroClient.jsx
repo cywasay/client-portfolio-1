@@ -166,17 +166,17 @@ export default function HeroClient() {
             </div>
           </div>
 
-          <div className="mb-4 grid grid-cols-3 rounded-3xl bg-white/40 py-5 sm:gap-6 lg:max-w-2xl lg:py-5">
+          <div className="mb-4 grid grid-cols-3 rounded-3xl bg-white/40 py-5 lg:max-w-2xl lg:py-5">
             {heroHighlights.map((stat, index) => (
               <div
                 data-hero-stat
                 key={stat.label}
-                className={`group cursor-default transition-transform duration-300 hover:-translate-y-1 ${index > 0 ? "border-l border-[#b7cedd] pl-4 sm:pl-6" : ""}`}
+                className={`group flex min-w-0 cursor-default flex-col items-center justify-center px-2 text-center transition-transform duration-300 hover:-translate-y-1 sm:px-5 ${index > 0 ? "border-l border-[#b7cedd]" : ""}`}
               >
                 <div className="font-serif text-2xl leading-none text-[#0d3b5f] transition-colors duration-300 group-hover:text-[#2380bd] sm:text-3xl">
                   {stat.number}
                 </div>
-                <div className="mt-2 max-w-[9rem] text-[0.62rem] font-semibold uppercase leading-4 tracking-[0.14em] text-[#607789] sm:text-xs">
+                <div className="mt-2 max-w-[9rem] text-center text-[0.62rem] font-semibold uppercase leading-4 tracking-[0.14em] text-[#607789] sm:text-xs">
                   {stat.label}
                 </div>
               </div>

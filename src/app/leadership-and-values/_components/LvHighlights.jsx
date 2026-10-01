@@ -1,49 +1,17 @@
 import Image from "next/image";
 import { highlights } from "../data";
-import { Card, CardTitle, CardDescription } from "@/components/ui/card";
+import EnvelopeEnding from "@/components/EnvelopeEnding";
 
-const highlightImages = [
-  "/edu-leader2.jpg",
-  "/edu-leader3.jpg",
-  "/edu-leader6.jpg",
-];
+const highlightImages = ["/edu-leader2.jpg", "/edu-leader3.jpg", "/edu-leader6.jpg"];
 
 export default function LvHighlights() {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="px-6 sm:px-12 lg:px-20 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-blue-950">
-            Leadership in Action
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {highlights.map((highlight, index) => (
-            <Card
-              key={highlight.title}
-              className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition duration-500 hover:-translate-y-2 border-none p-0"
-            >
-              <div className="aspect-video bg-gradient-to-br from-blue-100 to-emerald-100 flex items-center justify-center relative">
-                <Image
-                  src={highlightImages[index]}
-                  alt={highlight.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
-                <div className="text-3xl mb-3 text-white">{highlight.icon}</div>
-                <CardTitle className="text-xl font-bold text-white mb-2 underline-offset-4 decoration-white/30 group-hover:underline">
-                  {highlight.title}
-                </CardTitle>
-                <CardDescription className="text-white/90 text-sm leading-relaxed">
-                  {highlight.description}
-                </CardDescription>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
+    <EnvelopeEnding><section className="editorialSection editorialSectionAlt"><div className="editorialInner">
+      <div className="mb-10"><p className="editorialKicker">Leadership in action</p><h2 className="editorialHeading">Where values become visible.</h2></div>
+      <div className="grid gap-5 md:grid-cols-3">{highlights.map((highlight, index) => <article key={highlight.title} className="group overflow-hidden rounded-[1.75rem] border border-[#c8dceb] bg-white shadow-[0_18px_50px_rgba(25,70,101,.09)]">
+        <div className="relative h-72 overflow-hidden"><Image src={highlightImages[index]} alt={highlight.title} fill className="object-cover transition duration-700 group-hover:scale-[1.04]" /><div className="absolute inset-0 bg-gradient-to-t from-[#082b43]/55 to-transparent" /></div>
+        <div className="p-6"><span className="editorialIndex">{highlight.icon}</span><h3 className="mt-5 font-serif text-2xl text-[#123f60]">{highlight.title}</h3><p className="mt-3 leading-7 text-[#60798a]">{highlight.description}</p></div>
+      </article>)}</div>
+    </div></section></EnvelopeEnding>
   );
 }

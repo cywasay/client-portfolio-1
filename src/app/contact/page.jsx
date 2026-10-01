@@ -6,7 +6,7 @@ import ContactCta from './_components/ContactCta';
 
 export default function Contact() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-emerald-50 overflow-x-hidden">
+    <main id="top" className="interiorPage">
       <ContactHero />
       <ContactCards />
       <ContactForm />

@@ -1,100 +1,36 @@
 "use client";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-
-const palette = {
-  blue: {
-    gradient: "from-blue-500 to-blue-600",
-    light: "bg-blue-50",
-    border: "border-blue-200",
-    badge: "bg-blue-100 text-blue-700",
-  },
-  emerald: {
-    gradient: "from-emerald-500 to-emerald-600",
-    light: "bg-emerald-50",
-    border: "border-emerald-200",
-    badge: "bg-emerald-100 text-emerald-700",
-  },
-  purple: {
-    gradient: "from-purple-500 to-purple-600",
-    light: "bg-purple-50",
-    border: "border-purple-200",
-    badge: "bg-purple-100 text-purple-700",
-  },
-  orange: {
-    gradient: "from-orange-500 to-orange-600",
-    light: "bg-orange-50",
-    border: "border-orange-200",
-    badge: "bg-orange-100 text-orange-700",
-  },
-};
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 export default function AchievementModal({ achievement, onClose }) {
   if (!achievement) return null;
-  const colors = palette[achievement.color] || palette.blue;
-
   return (
     <Dialog open={!!achievement} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-2xl bg-white rounded-3xl p-0 overflow-hidden border-none">
-        <div className="p-8 space-y-6">
-          <DialogHeader className="flex flex-row items-center gap-6 space-y-0 text-left">
-            <div
-              className={`w-20 h-20 shrink-0 rounded-2xl bg-gradient-to-br ${colors.gradient} flex items-center justify-center text-3xl text-white shadow-lg`}
-            >
-              {achievement.icon}
-            </div>
-            <div className="flex-1">
-              <span
-                className={`inline-block px-3 py-1 ${colors.badge} rounded-full text-sm font-semibold mb-2`}
-              >
-                {achievement.category.charAt(0).toUpperCase() +
-                  achievement.category.slice(1)}
-              </span>
-              <DialogTitle className="text-2xl font-bold text-gray-800">
-                {achievement.title}
-              </DialogTitle>
-              <DialogDescription className="text-gray-600 text-base mt-1">
-                {achievement.organization} • {achievement.year}
-              </DialogDescription>
-            </div>
-          </DialogHeader>
-
-          <div className="space-y-6">
-            <Info title="Description" content={achievement.description} />
-            <Info title="Impact" content={achievement.impact} />
-
+      <DialogContent className="max-w-3xl overflow-hidden border border-[#c8dceb] bg-[#f8fbfd] p-0 shadow-[0_32px_90px_rgba(20,66,98,.24)] sm:rounded-[2rem]">
+        <div className="grid md:grid-cols-[180px_1fr]">
+          <aside className="flex min-h-40 flex-col justify-between bg-[#123f60] p-7 text-white md:min-h-[520px]">
+            <span className="font-serif text-6xl font-light text-[#a9d3ec]">{achievement.icon}</span>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                Key Metrics
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {achievement.metrics.map((metric) => (
-                  <span
-                    key={metric}
-                    className={`px-3 py-2 ${colors.light} rounded-lg text-sm font-medium text-gray-700 border ${colors.border}`}
-                  >
-                    {metric}
-                  </span>
-                ))}
-              </div>
+              <p className="mb-2 text-[.68rem] font-bold uppercase tracking-[.24em] text-[#a9d3ec]">{achievement.category}</p>
+              <p className="text-sm text-white/70">{achievement.year}</p>
             </div>
-
-            {achievement.highlight && (
-              <div
-                className={`p-4 ${colors.light} rounded-xl border ${colors.border}`}
-              >
-                <h4 className="font-semibold text-gray-800 mb-1">Highlight</h4>
-                <p className="text-gray-600 text-sm italic">
-                  "{achievement.highlight}"
-                </p>
+          </aside>
+          <div className="p-7 sm:p-10">
+            <DialogHeader className="space-y-3 text-left">
+              <DialogDescription className="text-xs font-bold uppercase tracking-[.2em] text-[#28719f]">{achievement.organization}</DialogDescription>
+              <DialogTitle className="max-w-xl font-serif text-3xl font-normal leading-tight text-[#0f3550] sm:text-4xl">{achievement.title}</DialogTitle>
+            </DialogHeader>
+            <div className="mt-8 space-y-7">
+              <Info title="The recognition" content={achievement.description} />
+              <Info title="The impact" content={achievement.impact} />
+              <div>
+                <h3 className="mb-3 text-xs font-bold uppercase tracking-[.18em] text-[#28719f]">At a glance</h3>
+                <div className="flex flex-wrap gap-2">
+                  {achievement.metrics.map((metric) => <span key={metric} className="rounded-full border border-[#c8dceb] bg-white px-4 py-2 text-sm text-[#34566e]">{metric}</span>)}
+                </div>
               </div>
-            )}
+              {achievement.highlight && <blockquote className="border-l-2 border-[#4f98c5] pl-5 font-serif text-xl italic leading-relaxed text-[#194f73]">{achievement.highlight}</blockquote>}
+            </div>
           </div>
         </div>
       </DialogContent>
@@ -102,9 +38,6 @@ export default function AchievementModal({ achievement, onClose }) {
   );
 }
 
-const Info = ({ title, content }) => (
-  <div className="space-y-1">
-    <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-    <p className="text-gray-600 leading-relaxed">{content}</p>
-  </div>
-);
+function Info({ title, content }) {
+  return <div><h3 className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-[#28719f]">{title}</h3><p className="leading-7 text-[#4d687a]">{content}</p></div>;
+}

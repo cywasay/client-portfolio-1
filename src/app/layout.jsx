@@ -1,24 +1,24 @@
 import "./globals.css";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Portfolio",
-  description: "Neelam's Portfolio",
+  title: {
+    default: "Neelam Nasir | Educator & Educational Leader",
+    template: "%s | Neelam Nasir",
+  },
+  description:
+    "The portfolio of Neelam Nasir—educator, school leader, mentor, and advocate for purposeful learning.",
   icons: {
-    icon: "/favicon.ico", // /public path
+    icon: "/favicon.ico",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className="font-sans"
-      >
+      <body className="font-sans">
         <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

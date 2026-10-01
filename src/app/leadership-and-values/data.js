@@ -1,27 +1,31 @@
 export const compassValues = [
   {
     angle: 0,
-    icon: "💡",
+    icon: "01",
     title: "Innovation",
     color: "from-blue-500 to-blue-600",
+    description: "Create the conditions for thoughtful experimentation, then turn what works into a dependable practice.",
   },
   {
     angle: 90,
-    icon: "❤️",
+    icon: "02",
     title: "Empathy",
-    color: "from-emerald-500 to-emerald-600",
+    color: "from-blue-500 to-sky-600",
+    description: "Listen closely to students and educators so decisions reflect lived experience, not assumptions.",
   },
   {
     angle: 180,
-    icon: "🎯",
+    icon: "03",
     title: "Purpose",
-    color: "from-purple-500 to-purple-600",
+    color: "from-blue-500 to-sky-600",
+    description: "Keep every initiative anchored to a clear educational reason and an outcome people can understand.",
   },
   {
     angle: 270,
-    icon: "🌱",
+    icon: "04",
     title: "Growth",
-    color: "from-orange-500 to-orange-600",
+    color: "from-blue-500 to-sky-600",
+    description: "Treat reflection, feedback, and professional learning as part of the work rather than an interruption to it.",
   },
 ];
 
@@ -54,36 +58,36 @@ export const journeyPoints = [
 
 export const principles = [
   {
-    icon: "🎯",
-    title: "Value / Principle 1",
-    description: "Brief explanation of this core value and its impact.",
+    icon: "01",
+    title: "People before process",
+    description: "Systems should support the people doing the work. Clarity and care belong in the same decision.",
   },
   {
-    icon: "💡",
-    title: "Value / Principle 2",
-    description: "Brief explanation of this core value and its impact.",
+    icon: "02",
+    title: "Evidence with context",
+    description: "Data matters most when it is read alongside the stories, circumstances, and aspirations behind it.",
   },
   {
-    icon: "🌱",
-    title: "Value / Principle 3",
-    description: "Brief explanation of this core value and its impact.",
+    icon: "03",
+    title: "Shared ownership",
+    description: "Lasting progress is designed with teachers, students, and communities—not merely delivered to them.",
   },
 ];
 
 export const highlights = [
   {
-    icon: "👥",
+    icon: "01",
     title: "Team Leadership",
     description:
       "Fostering collaboration and professional growth among educators.",
   },
   {
-    icon: "🚀",
+    icon: "02",
     title: "Innovation",
     description: "Transforming engagement with bold instructional methods.",
   },
   {
-    icon: "🎓",
+    icon: "03",
     title: "Mentorship",
     description: "Guiding aspiring educators toward excellence.",
   },
