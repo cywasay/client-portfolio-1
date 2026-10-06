@@ -6,7 +6,7 @@ export default function SiteFooter({ envelope = false }) {
       {envelope && <div className="siteFooterFlap" aria-hidden="true">A note from Neelam</div>}
       <div className="siteFooterMain">
         <div className="siteFooterIdentity">
-          <Link className="siteFooterBrand" href="/">Neelam Nasir<span>Educator &amp; educational leader</span></Link>
+          <Link className="siteFooterBrand" href="/">Neelam Nisar<span>Educator &amp; educational leader</span></Link>
           <p>Education changes what people believe is possible.</p>
         </div>
         <div className="siteFooterDirectory">
@@ -19,12 +19,13 @@ export default function SiteFooter({ envelope = false }) {
           <nav aria-label="Explore">
             <span>Explore</span>
             <Link href="/leadership-and-values">Leadership</Link>
+            <Link href="/research-and-publications">Research &amp; publications</Link>
             <Link href="/gallery">Gallery</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </div>
       </div>
-      <div className="siteFooterBottom"><p>© {new Date().getFullYear()} Neelam Nasir. All rights reserved.</p><a href="#top">Back to top <span>↑</span></a></div>
+      <div className="siteFooterBottom"><p>© {new Date().getFullYear()} Neelam Nisar. All rights reserved.</p><a href="#top">Back to top <span>↑</span></a></div>
     </footer>
   );
 }

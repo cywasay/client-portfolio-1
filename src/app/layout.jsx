@@ -3,11 +3,11 @@ import Header from "@/components/Header";
 
 export const metadata = {
   title: {
-    default: "Neelam Nasir | Educator & Educational Leader",
-    template: "%s | Neelam Nasir",
+    default: "Neelam Nisar | Educator & Educational Leader",
+    template: "%s | Neelam Nisar",
   },
   description:
-    "The portfolio of Neelam Nasir—educator, school leader, mentor, and advocate for purposeful learning.",
+    "The portfolio of Neelam Nisar—educator, school leader, mentor, and advocate for purposeful learning.",
   icons: {
     icon: "/favicon.ico",
   },

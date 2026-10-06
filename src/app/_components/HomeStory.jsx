@@ -5,17 +5,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowLeft, ArrowRight, BookOpen, Users, Compass, Plus, Minus } from "lucide-react";
 import SiteFooter from "@/components/SiteFooter";
+import ResearchFeature from "@/components/ResearchFeature";
+import { portfolioPhotos } from "@/lib/portfolio-photos";
 import styles from "./HomeStory.module.css";
 
 const principles = [
-  { title: "See the person. Unlock the potential.", label: "Student first", text: "Learning begins with belonging. Every student brings a different story, a different strength, and a different way of seeing the world. My role is to make room for all of them.", detail: "Inclusive classrooms. Individual encouragement. Meaningful challenge.", image: "/edu-leader3.jpg", alt: "Neelam Nasir with a group of students" },
-  { title: "Make curiosity part of the curriculum.", label: "Learning by doing", text: "The most memorable lessons invite students to question, experiment, and connect ideas to life beyond the classroom. Knowledge becomes powerful when students can put it to work.", detail: "Hands-on projects. Thoughtful questions. Real-world connections.", image: "/edu-leader2.jpg", alt: "Neelam Nasir discussing a student display at an outdoor event" },
-  { title: "Build a culture that keeps learning.", label: "Lead together", text: "A strong school is a community of learners, including its teachers and leaders. Listening, sharing practice, and supporting one another make progress a shared responsibility.", detail: "Teacher mentorship. Open dialogue. A shared sense of purpose.", image: "/edu-leader1.jpg", alt: "Neelam Nasir seated at her office desk" },
+  { title: "See the person. Unlock the potential.", label: "Student first", text: "Learning begins with belonging. Every student brings a different story, a different strength, and a different way of seeing the world. My role is to make room for all of them.", detail: "Inclusive classrooms. Individual encouragement. Meaningful challenge.", image: "/edu-leader3.jpg", alt: "Neelam Nisar with a group of students" },
+  { title: "Make curiosity part of the curriculum.", label: "Learning by doing", text: "The most memorable lessons invite students to question, experiment, and connect ideas to life beyond the classroom. Knowledge becomes powerful when students can put it to work.", detail: "Hands-on projects. Thoughtful questions. Real-world connections.", image: "/edu-leader2.jpg", alt: "Neelam Nisar discussing a student display at an outdoor event" },
+  { title: "Build a culture that keeps learning.", label: "Lead together", text: "A strong school is a community of learners, including its teachers and leaders. Listening, sharing practice, and supporting one another make progress a shared responsibility.", detail: "Teacher mentorship. Open dialogue. A shared sense of purpose.", image: "/edu-leader6.jpg", alt: "Neelam Nisar facilitating a group workshop" },
 ];
 const moments = [
-  { image: "/edu-leader2.jpg", title: "Where curiosity comes to life", tag: "Learning beyond the classroom", alt: "Students and Neelam Nasir exploring an outdoor project display" },
-  { image: "/edu-leader3.jpg", title: "The people behind the purpose", tag: "Our learning community", alt: "Neelam Nasir standing with students in a classroom" },
-  { image: "/edu-leader.jpg", title: "A voice for education", tag: "Speaking & leadership", alt: "Neelam Nasir speaking into a microphone at a lectern" },
+  { ...portfolioPhotos.gratitudePresentation, image: portfolioPhotos.gratitudePresentation.src, title: "A moment of shared gratitude", tag: "Recognition & community" },
+  { ...portfolioPhotos.roundtable, image: portfolioPhotos.roundtable.src, title: "A place for meaningful dialogue", tag: "Leadership in conversation" },
+  { ...portfolioPhotos.studentRecognition, image: portfolioPhotos.studentRecognition.src, title: "Celebrating the next generation", tag: "Student recognition" },
 ];
 
 function TextLink({ href, children }) {
@@ -25,6 +27,7 @@ function TextLink({ href, children }) {
 export default function HomeStory() {
   const storyRef = useRef(null);
   const momentTimerRef = useRef(null);
+  const accordionRef = useRef(null);
   const [active, setActive] = useState(0);
   const [moment, setMoment] = useState(0);
   const [isMomentChanging, setIsMomentChanging] = useState(false);
@@ -80,20 +83,38 @@ export default function HomeStory() {
 
   useEffect(() => () => window.clearTimeout(momentTimerRef.current), []);
 
+  useEffect(() => {
+    // Reserve space for the longest panel at the current width, including enlarged text.
+    const accordion = accordionRef.current;
+    const reservePanelSpace = () => {
+      const cards = [...accordion.querySelectorAll(`.${styles.principle}`)];
+      const headers = cards.reduce((height, card) => height + card.querySelector("h3").offsetHeight, 0);
+      const tallestPanel = Math.max(...cards.map(card => card.querySelector(`.${styles.principlePanel} > div`).scrollHeight));
+      const link = accordion.querySelector(`.${styles.textLink}`);
+      accordion.style.height = `${Math.ceil(headers + tallestPanel + cards.length * 12 + link.offsetHeight + 18)}px`;
+    };
+    reservePanelSpace();
+    const observer = new ResizeObserver(reservePanelSpace);
+    observer.observe(accordion);
+    document.fonts.ready.then(reservePanelSpace);
+    return () => observer.disconnect();
+  }, []);
+
   return <div ref={storyRef} className={styles.story}>
     <nav className={styles.chapterNav} aria-label="Explore this page">
       <span>A LIFE IN EDUCATION</span>
       <a href="#about">01 <span>The educator</span></a>
       <a href="#approach">02 <span>The approach</span></a>
-      <a href="#moments">03 <span>The moments</span></a>
-      <a href="#connect">04 <span>The conversation</span></a>
+      <a href="#research">03 <span>The research</span></a>
+      <a href="#moments">04 <span>The moments</span></a>
+      <a href="#connect">05 <span>The conversation</span></a>
     </nav>
 
     <section id="about" className={`${styles.section} ${styles.about}`} aria-labelledby="about-heading">
       <div className={styles.aboutVisual}>
-        <div className={styles.portrait}><Image src="/edu-leader1.jpg" alt="Neelam Nasir at her desk" fill sizes="(max-width: 800px) 90vw, 42vw" /></div>
+        <div className={styles.portrait}><Image src="/edu-leader1.jpg" alt="Neelam Nisar at her desk" fill loading="lazy" sizes="(max-width: 700px) 90vw, 42vw" /></div>
         <div className={styles.photoNote}><span>AT HEART, ALWAYS</span><strong>An educator.</strong><BookOpen size={28} strokeWidth={1} aria-hidden="true" /></div>
-        <span className={styles.verticalNote}>NEELAM NASIR / A PERSONAL PORTRAIT</span>
+        <span className={styles.verticalNote}>NEELAM NISAR / A PERSONAL PORTRAIT</span>
       </div>
       <div className={styles.aboutCopy}>
         <p className={styles.eyebrow}>01 / THE EDUCATOR</p>
@@ -101,8 +122,8 @@ export default function HomeStory() {
         <p className={styles.lead}>And the people inside it make all the difference.</p>
         <p>My work sits at the meeting point of teaching, leadership, and community. Whether I am supporting a student, mentoring a teacher, or speaking about education, the purpose stays the same: helping people see what they can become.</p>
         <p>I believe in high expectations held with compassion. In classrooms that welcome questions. And in schools where every person feels seen.</p>
-        <TextLink href="/about">Meet Neelam Nasir</TextLink>
-        <div className={styles.signature}>Neelam Nasir<span>Principal. Educator. Lifelong learner.</span></div>
+        <TextLink href="/about">Meet Neelam Nisar</TextLink>
+        <div className={styles.signature}>Neelam Nisar<span>Principal. Educator. Lifelong learner.</span></div>
       </div>
     </section>
 
@@ -127,29 +148,31 @@ export default function HomeStory() {
     <section id="approach" className={`${styles.section} ${styles.approach}`} aria-labelledby="approach-heading">
       <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>02 / THE APPROACH</p><h2 id="approach-heading">Principles, put<br /><em>into practice.</em></h2></div><p>Good education starts with a belief.<br />Great education lives it, every day.</p></div>
       <div className={styles.principleGrid}>
-        <div className={styles.accordion}>
+        <div ref={accordionRef} className={styles.accordion}>
           {principles.map((item, index) => <div key={item.label} className={`${styles.principle} ${active === index ? styles.selected : ""}`}>
             <h3><button id={`principle-trigger-${index}`} onClick={() => setActive(index)} aria-expanded={active === index} aria-controls={`principle-panel-${index}`}><span>0{index + 1}</span>{item.label}{active === index ? <Minus size={20} /> : <Plus size={20} />}</button></h3>
             <div id={`principle-panel-${index}`} role="region" aria-labelledby={`principle-trigger-${index}`} aria-hidden={active !== index} className={`${styles.principlePanel} ${active === index ? styles.panelOpen : ""}`}><div><h4>{item.title}</h4><p>{item.text}</p><small>{item.detail}</small></div></div>
           </div>)}
           <TextLink href="/leadership-and-values">Explore all leadership values</TextLink>
         </div>
-        <figure className={styles.principlePhoto}><Image key={selected.image} src={selected.image} alt={selected.alt} fill sizes="(max-width: 800px) 90vw, 45vw" /><figcaption><span>IN PRACTICE</span>{selected.label}<span>0{active + 1} / 03</span></figcaption></figure>
+        <figure className={styles.principlePhoto}><Image key={selected.image} src={selected.image} alt={selected.alt} fill loading="lazy" sizes="(max-width: 700px) 90vw, 45vw" /><figcaption><span>IN PRACTICE</span>{selected.label}<span>0{active + 1} / 03</span></figcaption></figure>
       </div>
     </section>
 
+    <ResearchFeature />
+
     <section id="moments" className={styles.moments} aria-labelledby="moments-heading">
-      <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>03 / THE MOMENTS</p><h2 id="moments-heading">The work.<br /><em>The people. The purpose.</em></h2></div><TextLink href="/gallery">Visit the gallery</TextLink></div>
+      <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>04 / THE MOMENTS</p><h2 id="moments-heading">The work.<br /><em>The people. The purpose.</em></h2></div><TextLink href="/gallery">Visit the gallery</TextLink></div>
       <div className={`${styles.journal} ${isMomentChanging ? styles.journalChanging : ""}`}>
-        <div className={styles.journalImage}><Image key={photo.image} src={photo.image} alt={photo.alt} fill sizes="(max-width: 800px) 100vw, 65vw" /></div>
-        <div className={styles.journalCaption} aria-live="polite"><span className={styles.eyebrow}>A PHOTO JOURNAL</span><span className={styles.bigNumber}>0{moment + 1}<small>/ 03</small></span><p className={styles.eyebrow}>{photo.tag}</p><h3>{photo.title}</h3><p>A glimpse into the relationships and shared experiences at the heart of a life in education.</p>
+        <div className={styles.journalImage}>{/* Keep slides mounted so nearby photos load before a fade switches to them. */}{moments.map((item, index) => <Image key={item.image} src={item.image} alt={item.alt} aria-hidden={index !== moment} fill loading="lazy" style={{ objectPosition: item.position, opacity: index === moment ? 1 : 0 }} sizes="(max-width: 700px) 90vw, 58vw" />)}</div>
+        <div className={styles.journalCaption} aria-live="polite"><span className={styles.eyebrow}>A PHOTO JOURNAL</span><span className={styles.bigNumber}>0{moment + 1}<small>/ 03</small></span><p className={styles.eyebrow}>{photo.tag}</p><div className={styles.journalTitles}><h3>{photo.title}</h3>{moments.map(item => <span key={item.title} className={styles.journalTitleGhost} aria-hidden="true">{item.title}</span>)}</div><p>A glimpse into the relationships and shared experiences at the heart of a life in education.</p>
           <div className={styles.controls}><button aria-label="Previous photo" onClick={() => changeMoment((moment + 2) % 3)}><ArrowLeft size={20} /></button><div className={styles.dots}>{moments.map((item, index) => <button key={item.title} aria-label={`Show photo: ${item.title}`} aria-pressed={moment === index} onClick={() => changeMoment(index)} />)}</div><button aria-label="Next photo" onClick={() => changeMoment((moment + 1) % 3)}><ArrowRight size={20} /></button></div>
         </div>
       </div>
     </section>
 
     <div className={styles.envelopeStage}>
-      <section id="connect" className={styles.connect} aria-labelledby="connect-heading"><div className={styles.orbit} aria-hidden="true" /><p className={styles.eyebrow}>04 / THE CONVERSATION</p><h2 id="connect-heading">The next great idea<br />starts with <em>a conversation.</em></h2><p>For educational collaborations, speaking invitations,<br className={styles.desktopBreak} /> or a thoughtful exchange of ideas, let&apos;s connect.</p><Link className={styles.contactButton} href="/contact">Start a conversation<ArrowUpRight size={22} aria-hidden="true" /></Link><div className={styles.contactTopics}><span>Education</span><span>Leadership</span><span>Community</span></div><span className={styles.envelopeHint} aria-hidden="true">Keep scrolling <span>↓</span></span></section>
+      <section id="connect" className={styles.connect} aria-labelledby="connect-heading"><div className={styles.orbit} aria-hidden="true" /><p className={styles.eyebrow}>05 / THE CONVERSATION</p><h2 id="connect-heading">The next great idea<br />starts with <em>a conversation.</em></h2><p>For educational collaborations, speaking invitations,<br className={styles.desktopBreak} /> or a thoughtful exchange of ideas, let&apos;s connect.</p><Link className={styles.contactButton} href="/contact">Start a conversation<ArrowUpRight size={22} aria-hidden="true" /></Link><div className={styles.contactTopics}><span>Education</span><span>Leadership</span><span>Community</span></div><span className={styles.envelopeHint} aria-hidden="true">Keep scrolling <span>↓</span></span></section>
       <SiteFooter envelope />
     </div>
   </div>;

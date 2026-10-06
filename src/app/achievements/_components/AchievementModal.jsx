@@ -6,8 +6,8 @@ export default function AchievementModal({ achievement, onClose }) {
   if (!achievement) return null;
   return (
     <Dialog open={!!achievement} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-3xl overflow-hidden border border-[#c8dceb] bg-[#f8fbfd] p-0 shadow-[0_32px_90px_rgba(20,66,98,.24)] sm:rounded-[2rem]">
-        <div className="grid md:grid-cols-[180px_1fr]">
+      <DialogContent className="max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-3xl overflow-hidden border border-[#c8dceb] bg-[#f8fbfd] p-0 shadow-[0_32px_90px_rgba(20,66,98,.24)] sm:max-w-3xl sm:rounded-[2rem] [&>[data-slot=dialog-close]]:grid [&>[data-slot=dialog-close]]:size-11 [&>[data-slot=dialog-close]]:place-items-center [&>[data-slot=dialog-close]]:rounded-full [&>[data-slot=dialog-close]]:bg-[#123f60] [&>[data-slot=dialog-close]]:text-white [&>[data-slot=dialog-close]]:opacity-100">
+        <div className="grid max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain md:grid-cols-[180px_1fr]">
           <aside className="flex min-h-40 flex-col justify-between bg-[#123f60] p-7 text-white md:min-h-[520px]">
             <span className="font-serif text-6xl font-light text-[#a9d3ec]">{achievement.icon}</span>
             <div>

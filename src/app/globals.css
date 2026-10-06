@@ -107,3 +107,36 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 /* Cascade lock: interior type may never outgrow the homepage hero. */
 .interiorHero h1{font-size:clamp(2.65rem,5vw,3.5rem)!important;line-height:1!important}.interiorHeroLead{font-size:clamp(.96rem,1.4vw,1.08rem)!important;line-height:1.7!important}.editorialHeading h2,h2.editorialHeading{font-size:clamp(2rem,3.2vw,2.8rem)!important;line-height:1.07!important}.interiorPage .editorialCta h2,.interiorPage .editorialCta h3,.interiorPage .editorialCta blockquote{font-size:clamp(2rem,3.2vw,2.8rem)!important;line-height:1.1!important}.interiorPage article h1{font-size:clamp(2.65rem,5vw,3.5rem)!important;line-height:1!important}.interiorPage [class*="text-7xl"],.interiorPage [class*="text-6xl"]{font-size:clamp(2.75rem,5vw,3.5rem)!important}.interiorPage [class*="text-5xl"]{font-size:clamp(2.15rem,3.8vw,2.8rem)!important}.interiorPage [class*="text-4xl"]{font-size:clamp(1.85rem,3vw,2.35rem)!important}.interiorPage [class*="text-3xl"]{font-size:clamp(1.5rem,2.5vw,1.9rem)!important}.interiorPage [class*="text-2xl"]{font-size:clamp(1.2rem,2vw,1.5rem)!important}.interiorPage p{font-size:clamp(.94rem,1.4vw,1rem)}.interiorPage .editorialKicker{font-size:9px}
 @media(max-width:700px){.interiorHero h1{font-size:clamp(2.4rem,10vw,3rem)!important}.editorialHeading h2,h2.editorialHeading{font-size:clamp(1.9rem,8vw,2.4rem)!important}.interiorPage .editorialCta h2,.interiorPage .editorialCta h3,.interiorPage .editorialCta blockquote{font-size:clamp(1.85rem,7.5vw,2.35rem)!important}.interiorPage p{font-size:.95rem}}
+
+/* Constrain actual content, rather than hiding oversized mobile layouts. */
+.editorialInner,.editorialInner > *,[data-slot="tabs"],[data-slot="tabs-content"] { min-width:0; }
+.editorialTabs { width:100%; max-width:100%; min-width:0; }
+.editorialTab { min-height:44px; }
+.interiorPage h1,.interiorPage h2,.interiorPage h3,.editorialCard p { overflow-wrap:break-word; }
+.editorialCard { min-width:0; }
+.siteFooterDirectory nav { min-width:0; }
+.siteFooterDirectory a { display:flex; align-items:center; min-height:36px; }
+.siteFooterBottom > a { display:inline-flex; align-items:center; min-height:44px; flex-shrink:0; }
+:where(a,button,input,textarea):focus-visible { outline:2px solid #438fbd; outline-offset:4px; }
+@media(max-width:700px) {
+  html { scroll-padding-top:80px; }
+  .editorialTabs { justify-content:flex-start; overscroll-behavior-x:contain; scroll-padding-inline:4px; }
+  .interiorHeroLead br { display:none; }
+  .interiorPage input,.interiorPage textarea { font-size:16px; }
+  .siteFooterDirectory a { min-height:44px; }
+  .siteFooterDirectory nav { gap:0; }
+}
+@media(max-width:380px) {
+  .editorialSection { padding-inline:20px; }
+  .interiorHero { padding-inline:20px; }
+  .interiorHero h1 { font-size:clamp(2rem,10vw,2.4rem)!important; }
+  .interiorEyebrow { font-size:9px; letter-spacing:.15em; }
+  .interiorStats { gap:8px; }
+  .interiorStat span { font-size:8px; letter-spacing:.08em; }
+}
+@media(hover:none) {
+  .editorialCard:hover,.editorialButton:hover,.editorialTab:hover { transform:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+}

@@ -124,3 +124,40 @@
 @keyframes photo-wash { from { opacity:0; } 45% { opacity:1; } to { opacity:0; } }
 @keyframes orbit-drift { from { transform:translate(-50%,-55%) scale(.9); opacity:.45; } to { transform:translate(-50%,-45%) scale(1.12); opacity:.9; } }
 @media(prefers-reduced-motion:reduce) { .aboutVisual .portrait img,.principlePhoto::after,.connect .orbit { animation:none!important; } }
+
+/* Responsive content must retain its breathing room without overlapping the next section. */
+.aboutCopy,.accordion,.journalCaption,.leadershipTop > * { min-width:0; }
+.journalTitles { display:grid; }
+.journalTitles > * { grid-area:1 / 1; font:32px/1.12 Georgia,serif; letter-spacing:-.03em; margin-bottom:16px; }
+.journalTitleGhost { visibility:hidden; }
+.principle h3 button { min-height:64px; }
+.controls > button,.dots button { min-height:44px; }
+.dots button { width:32px; }
+.dots button::after { top:21px; }
+@media(max-width:1000px) and (min-width:701px) {
+  .chapterNav { gap:8px; padding-inline:20px; }
+  .chapterNav a { padding-inline:10px; font-size:9px; }
+  .role,.role + .role { padding:24px 20px; }
+  .role h3 { font-size:27px; }
+  .roleTop > svg { padding:10px; }
+  .journal { grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); }
+}
+@media(max-width:700px) {
+  .chapterNav { flex-wrap:wrap; justify-content:center; }
+  .chapterNav a { flex:1 1 52px; }
+  .chapterNav a span { font-size:9px; text-align:center; }
+  .aboutCopy h2,.sectionHeading h2,.connect h2 { font-size:clamp(2rem,9vw,2.65rem); }
+  .principle { padding-inline:18px; }
+  .journalImage { min-height:0; aspect-ratio:4/3; }
+  .journalCaption { min-height:355px; }
+  .journalTitles > *,.journalCaption h3 { font-size:clamp(1.55rem,7vw,1.875rem); }
+  .envelopeStage .connect { position:relative; min-height:auto; padding:76px 24px 90px; }
+  .connect .envelopeHint { display:none; }
+  .contactButton { max-width:100%; gap:20px; padding-inline:24px; }
+  .contactButton svg { flex-shrink:0; }
+}
+@media(hover:none) {
+  .role:hover,.contactButton:hover { transform:none; }
+  .aboutVisual:hover img { transform:none; }
+  .photoNote { backdrop-filter:none; background:#edf6fb; }
+}

@@ -22,6 +22,7 @@ export const experienceTimeline = [
 export const approachParagraphs = [
   'My approach to education is built on relationships, innovation, and impact. Meaningful learning happens when students feel connected, challenged, and supported.',
   'Through project-based learning and real-world applications, students see the relevance of their education and develop critical thinking skills for an ever-changing world.',
-  'Every lesson is an opportunity to inspire, every challenge a chance to grow, and every student a unique story waiting to be written.'
+  'Every lesson is an opportunity to inspire, every challenge a chance to grow, and every student a unique story waiting to be written.',
+  'My work as a researcher and writer extends that practice beyond the classroom. My publications explore school leadership, language education, and learning technologies, while Educational Insights: A Practitioner’s Perspective brings together research and reflections on education in Pakistan.'
 ];
 

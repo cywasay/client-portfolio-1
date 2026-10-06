@@ -20,8 +20,10 @@ export default function HeroClient() {
 
       if (reducedMotion) return;
 
+      const compactScreen = window.matchMedia("(max-width: 700px)").matches;
+
       const timeline = gsap.timeline({
-        defaults: { duration: 0.9, ease: "power3.out" },
+        defaults: { duration: compactScreen ? 0.5 : 0.9, ease: "power3.out" },
       });
 
       timeline
@@ -52,7 +54,7 @@ export default function HeroClient() {
   }, []);
 
   const handleVisualMove = (event) => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width - 0.5;
@@ -188,12 +190,12 @@ export default function HeroClient() {
           data-hero-visual
           onPointerMove={handleVisualMove}
           onPointerLeave={resetVisual}
-          className="group relative min-h-[32rem] overflow-hidden bg-[#0a2943] lg:min-h-0"
+          className="group relative min-h-[26rem] overflow-hidden bg-[#0a2943] sm:min-h-[32rem] lg:min-h-0"
         >
           <div ref={portraitRef} className="absolute -inset-3 will-change-transform">
             <Image
               src="/edu-leader.jpg"
-              alt="Neelam Nasir speaking at an educational event"
+              alt="Neelam Nisar speaking at an educational event"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 46vw"
@@ -215,7 +217,7 @@ export default function HeroClient() {
             </div>
             <div className="flex items-end justify-between gap-6 border-t border-white/30 pt-5 text-white">
               <div>
-                <p className="font-serif text-2xl">Neelam Nasir</p>
+                <p className="font-serif text-2xl">Neelam Nisar</p>
                 <p className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/70">
                   Principal &amp; Educational Leader
                 </p>

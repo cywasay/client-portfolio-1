@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { stats } from "../data";
+import { portfolioPhotos } from "@/lib/portfolio-photos";
 
 export default function AboutHero() {
   return (
@@ -14,7 +15,7 @@ export default function AboutHero() {
           </div>
         </div>
         <div className="relative mx-auto aspect-[4/4.5] w-full max-w-md overflow-hidden rounded-[90px_24px_24px_24px] bg-[#dbe9f1] shadow-[0_28px_60px_#153b5420]">
-          <Image src="/edu-leader2.jpg" alt="Neelam Nasir with students" fill priority className="object-cover object-center" sizes="(max-width: 1024px) 90vw, 40vw" />
+          <Image src={portfolioPhotos.eventPortrait.src} alt={portfolioPhotos.eventPortrait.alt} fill priority className="object-cover" style={{ objectPosition: portfolioPhotos.eventPortrait.position }} sizes="(max-width: 1024px) 90vw, 40vw" />
         </div>
       </div>
     </section>

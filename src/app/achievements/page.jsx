@@ -3,11 +3,13 @@ import AchievementsClient from './_components/AchievementsClient';
 import { achievements } from './data';
 import Link from 'next/link';
 import EnvelopeEnding from '@/components/EnvelopeEnding';
+import RecognitionPhoto from './_components/RecognitionPhoto';
 
 export default function Achievements() {
   return (
     <main id="top" className="interiorPage">
       <AchievementsHero />
+      <RecognitionPhoto />
       <AchievementsClient achievements={achievements} />
       <EnvelopeEnding>
         <section className="editorialSection editorialSectionAlt">

@@ -10,7 +10,7 @@ export default function ApproachBlock() {
         <div className="mt-7 space-y-5 text-[15px] leading-8 text-[#5a7385]">{approachParagraphs.map(text=><p key={text}>{text}</p>)}</div>
       </div>
       <div className="relative aspect-[4/4.2] overflow-hidden rounded-[70px_22px_22px_22px]">
-        <Image src="/edu-leader3.jpg" alt="Neelam Nasir with students" fill className="object-cover" sizes="(max-width:1024px) 90vw, 40vw" />
+        <Image src="/edu-leader7.jpg" alt="Neelam Nisar with students in a classroom" fill loading="lazy" className="object-cover" sizes="(max-width:1023px) 90vw, 40vw" />
       </div>
     </div>
   );

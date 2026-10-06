@@ -42,5 +42,5 @@ export default function ContactForm() {
 
 function InputField({ id, label, type, value, onChange, placeholder }) {
   const classes = "rounded-xl border border-[#c8dceb] bg-[#f7fafc] px-4 text-[#173e58] shadow-none outline-none transition placeholder:text-[#8ca0ae] focus:border-[#4f98c5] focus:bg-white focus-visible:ring-2 focus-visible:ring-[#cfe8f6]";
-  return <div className="space-y-2"><Label htmlFor={id} className="text-xs font-bold uppercase tracking-[.14em] text-[#46687e]">{label}</Label>{type === "textarea" ? <Textarea id={id} name={id} value={value} onChange={onChange} required placeholder={placeholder} className={`${classes} min-h-40 resize-none py-4`} /> : <Input id={id} name={id} type={type} value={value} onChange={onChange} required placeholder={placeholder} className={`${classes} h-12`} />}</div>;
+  return <div className="min-w-0 space-y-2"><Label htmlFor={id} className="text-xs font-bold uppercase tracking-[.14em] text-[#46687e]">{label}</Label>{type === "textarea" ? <Textarea id={id} name={id} value={value} onChange={onChange} required placeholder={placeholder} className={`${classes} min-h-40 resize-y py-4`} /> : <Input id={id} name={id} type={type} autoComplete={id === "email" ? "email" : "name"} value={value} onChange={onChange} required placeholder={placeholder} className={`${classes} h-12`} />}</div>;
 }
